@@ -1,11 +1,12 @@
 #include <iostream>
 #include <thread>
 
-#include "LinearAlgebraLibrary.hpp"
+#include "./LinearAlgebraLib/Matrix.hpp"
+#include "./LinearAlgebraLib/functions_matrix.hpp"
 #include "tools/Timer.hpp"
 
 using namespace std;
-
+using namespace lalib;
 
 int main() {
     cout << "\n\n\n\n\n\n\n\n\n\n";
@@ -18,21 +19,23 @@ int main() {
             {2,3,-1,1,1,1}
         };
 
-    double y[2][2] = 
+    double y[3][3] = 
         {
-            {-2,2},
-            {1,1},
+            {1,0,0},
+            {3,2,0},
+            {7,-4,5}
         };
 
-    double z[2][2] = 
+    double z[3][3] = 
         {
-            {1,6},
-            {-2,2}
+            {1,0,4},
+            {1,2,6},
+            {2,0,8}
         };
     
-    Matrix<double> arr1(x,true);
-    Matrix<double> arr2(y,true);
-    Matrix<double> arr3(z,true);
+    Matrix arr1(x);
+    Matrix arr2(y);
+    Matrix arr3(z);
 
     /*
     arr1.RowSum(0,1,-2);
@@ -49,12 +52,8 @@ int main() {
     arr1.RowSum(1,0,-8);
     */
 
-    Timer timer;
-    arr1.Gauss_Jordan();
-    timer.stopPrint();
-
-    printMatrix(arr1,2);
-
+    printMatrix(3.1 * arr2);
+    cout<< det(arr2);
     
 
     //arr2.ChangeSize(2,2);
